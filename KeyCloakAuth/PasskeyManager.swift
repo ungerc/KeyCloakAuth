@@ -45,9 +45,6 @@ import CryptoKit
 /// - Note: This class inherits from NSObject to conform to ASAuthorizationControllerDelegate
 @MainActor
 class PasskeyManager: NSObject {
-    /// Shared singleton instance for app-wide passkey management
-    static let shared = PasskeyManager()
-    
     /// Indicates whether passkeys are available on the current device
     /// - Note: Requires iOS 16.0 or later
     var isPasskeyAvailable = false
@@ -56,23 +53,32 @@ class PasskeyManager: NSObject {
     /// This should match your Keycloak server's domain
     private let domain: String
     
-    /// Initializes the PasskeyManager and configures the relying party domain
+    /// Initializes the PasskeyManager with a specific domain
     ///
-    /// The domain is extracted from the Keycloak configuration and used as the
-    /// relying party identifier for all WebAuthn operations. This ensures passkeys
-    /// are bound to your specific Keycloak instance.
-    override init() {
-        // Extract domain from Keycloak config
-        let config = KeycloakConfig()
-        if let url = URL(string: config.keycloakBaseURL),
-           let host = url.host {
-            self.domain = host
-        } else {
-            self.domain = "keycloak.local"
-        }
-        
+    /// - Parameter domain: The relying party identifier for WebAuthn operations.
+    ///                    This should match your Keycloak server's domain.
+    ///
+    /// The domain is used as the relying party identifier for all WebAuthn operations.
+    /// This ensures passkeys are bound to your specific Keycloak instance.
+    init(domain: String) {
+        self.domain = domain
         super.init()
         checkPasskeyAvailability()
+    }
+    
+    /// Convenience initializer that extracts domain from Keycloak configuration
+    ///
+    /// This initializer automatically extracts the domain from the Keycloak base URL
+    /// in the configuration, falling back to "keycloak.local" if extraction fails.
+    convenience init(config: KeycloakConfig) {
+        let domain: String
+        if let url = URL(string: config.keycloakBaseURL),
+           let host = url.host {
+            domain = host
+        } else {
+            domain = "keycloak.local"
+        }
+        self.init(domain: domain)
     }
     
     /// Checks if passkeys are available on the current device
