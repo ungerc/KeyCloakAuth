@@ -29,9 +29,22 @@
 		AAEE5B0D2DF5AEFE0000F2FF /* KeyCloakAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyCloakAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AAEE5B302DF5D23F0000F2FF /* Exceptions for "KeyCloakAuth" folder in "KeyCloakAuth" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				README.md,
+			);
+			target = AAEE5AF32DF5AEFB0000F2FF /* KeyCloakAuth */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AAEE5AF62DF5AEFB0000F2FF /* KeyCloakAuth */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AAEE5B302DF5D23F0000F2FF /* Exceptions for "KeyCloakAuth" folder in "KeyCloakAuth" target */,
+			);
 			path = KeyCloakAuth;
 			sourceTree = "<group>";
 		};
