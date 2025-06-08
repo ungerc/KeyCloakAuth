@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		AAEE5B042DF5AEFE0000F2FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAEE5AEC2DF5AEFB0000F2FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAEE5AF32DF5AEFB0000F2FF;
+			remoteInfo = KeyCloakAuth;
+		};
+		AAEE5B0E2DF5AEFE0000F2FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAEE5AEC2DF5AEFB0000F2FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAEE5AF32DF5AEFB0000F2FF;
+			remoteInfo = KeyCloakAuth;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AAEE5AF42DF5AEFB0000F2FF /* KeyCloakAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyCloakAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAEE5B032DF5AEFE0000F2FF /* KeyCloakAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyCloakAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAEE5B0D2DF5AEFE0000F2FF /* KeyCloakAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyCloakAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AAEE5AF62DF5AEFB0000F2FF /* KeyCloakAuth */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = KeyCloakAuth;
+			sourceTree = "<group>";
+		};
+		AAEE5B062DF5AEFE0000F2FF /* KeyCloakAuthTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = KeyCloakAuthTests;
+			sourceTree = "<group>";
+		};
+		AAEE5B102DF5AEFE0000F2FF /* KeyCloakAuthUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = KeyCloakAuthUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAEE5AF12DF5AEFB0000F2FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAEE5B002DF5AEFE0000F2FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAEE5B0A2DF5AEFE0000F2FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAEE5AEB2DF5AEFB0000F2FF = {
+			isa = PBXGroup;
+			children = (
+				AAEE5AF62DF5AEFB0000F2FF /* KeyCloakAuth */,
+				AAEE5B062DF5AEFE0000F2FF /* KeyCloakAuthTests */,
+				AAEE5B102DF5AEFE0000F2FF /* KeyCloakAuthUITests */,
+				AAEE5AF52DF5AEFB0000F2FF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAEE5AF52DF5AEFB0000F2FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAEE5AF42DF5AEFB0000F2FF /* KeyCloakAuth.app */,
+				AAEE5B032DF5AEFE0000F2FF /* KeyCloakAuthTests.xctest */,
+				AAEE5B0D2DF5AEFE0000F2FF /* KeyCloakAuthUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAEE5AF32DF5AEFB0000F2FF /* KeyCloakAuth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAEE5B172DF5AEFE0000F2FF /* Build configuration list for PBXNativeTarget "KeyCloakAuth" */;
+			buildPhases = (
+				AAEE5AF02DF5AEFB0000F2FF /* Sources */,
+				AAEE5AF12DF5AEFB0000F2FF /* Frameworks */,
+				AAEE5AF22DF5AEFB0000F2FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AAEE5AF62DF5AEFB0000F2FF /* KeyCloakAuth */,
+			);
+			name = KeyCloakAuth;
+			packageProductDependencies = (
+			);
+			productName = KeyCloakAuth;
+			productReference = AAEE5AF42DF5AEFB0000F2FF /* KeyCloakAuth.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AAEE5B022DF5AEFE0000F2FF /* KeyCloakAuthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAEE5B1A2DF5AEFE0000F2FF /* Build configuration list for PBXNativeTarget "KeyCloakAuthTests" */;
+			buildPhases = (
+				AAEE5AFF2DF5AEFE0000F2FF /* Sources */,
+				AAEE5B002DF5AEFE0000F2FF /* Frameworks */,
+				AAEE5B012DF5AEFE0000F2FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAEE5B052DF5AEFE0000F2FF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AAEE5B062DF5AEFE0000F2FF /* KeyCloakAuthTests */,
+			);
+			name = KeyCloakAuthTests;
+			packageProductDependencies = (
+			);
+			productName = KeyCloakAuthTests;
+			productReference = AAEE5B032DF5AEFE0000F2FF /* KeyCloakAuthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AAEE5B0C2DF5AEFE0000F2FF /* KeyCloakAuthUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAEE5B1D2DF5AEFE0000F2FF /* Build configuration list for PBXNativeTarget "KeyCloakAuthUITests" */;
+			buildPhases = (
+				AAEE5B092DF5AEFE0000F2FF /* Sources */,
+				AAEE5B0A2DF5AEFE0000F2FF /* Frameworks */,
+				AAEE5B0B2DF5AEFE0000F2FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAEE5B0F2DF5AEFE0000F2FF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AAEE5B102DF5AEFE0000F2FF /* KeyCloakAuthUITests */,
+			);
+			name = KeyCloakAuthUITests;
+			packageProductDependencies = (
+			);
+			productName = KeyCloakAuthUITests;
+			productReference = AAEE5B0D2DF5AEFE0000F2FF /* KeyCloakAuthUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAEE5AEC2DF5AEFB0000F2FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					AAEE5AF32DF5AEFB0000F2FF = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					AAEE5B022DF5AEFE0000F2FF = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = AAEE5AF32DF5AEFB0000F2FF;
+					};
+					AAEE5B0C2DF5AEFE0000F2FF = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = AAEE5AF32DF5AEFB0000F2FF;
+					};
+				};
+			};
+			buildConfigurationList = AAEE5AEF2DF5AEFB0000F2FF /* Build configuration list for PBXProject "KeyCloakAuth" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAEE5AEB2DF5AEFB0000F2FF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AAEE5AF52DF5AEFB0000F2FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAEE5AF32DF5AEFB0000F2FF /* KeyCloakAuth */,
+				AAEE5B022DF5AEFE0000F2FF /* KeyCloakAuthTests */,
+				AAEE5B0C2DF5AEFE0000F2FF /* KeyCloakAuthUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAEE5AF22DF5AEFB0000F2FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAEE5B012DF5AEFE0000F2FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAEE5B0B2DF5AEFE0000F2FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAEE5AF02DF5AEFB0000F2FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAEE5AFF2DF5AEFE0000F2FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAEE5B092DF5AEFE0000F2FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AAEE5B052DF5AEFE0000F2FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAEE5AF32DF5AEFB0000F2FF /* KeyCloakAuth */;
+			targetProxy = AAEE5B042DF5AEFE0000F2FF /* PBXContainerItemProxy */;
+		};
+		AAEE5B0F2DF5AEFE0000F2FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAEE5AF32DF5AEFB0000F2FF /* KeyCloakAuth */;
+			targetProxy = AAEE5B0E2DF5AEFE0000F2FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AAEE5B152DF5AEFE0000F2FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AAEE5B162DF5AEFE0000F2FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AAEE5B182DF5AEFE0000F2FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cunger.KeyCloakAuth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AAEE5B192DF5AEFE0000F2FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cunger.KeyCloakAuth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AAEE5B1B2DF5AEFE0000F2FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cunger.KeyCloakAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyCloakAuth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KeyCloakAuth";
+			};
+			name = Debug;
+		};
+		AAEE5B1C2DF5AEFE0000F2FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cunger.KeyCloakAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyCloakAuth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KeyCloakAuth";
+			};
+			name = Release;
+		};
+		AAEE5B1E2DF5AEFE0000F2FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cunger.KeyCloakAuthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KeyCloakAuth;
+			};
+			name = Debug;
+		};
+		AAEE5B1F2DF5AEFE0000F2FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cunger.KeyCloakAuthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KeyCloakAuth;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAEE5AEF2DF5AEFB0000F2FF /* Build configuration list for PBXProject "KeyCloakAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAEE5B152DF5AEFE0000F2FF /* Debug */,
+				AAEE5B162DF5AEFE0000F2FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAEE5B172DF5AEFE0000F2FF /* Build configuration list for PBXNativeTarget "KeyCloakAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAEE5B182DF5AEFE0000F2FF /* Debug */,
+				AAEE5B192DF5AEFE0000F2FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAEE5B1A2DF5AEFE0000F2FF /* Build configuration list for PBXNativeTarget "KeyCloakAuthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAEE5B1B2DF5AEFE0000F2FF /* Debug */,
+				AAEE5B1C2DF5AEFE0000F2FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAEE5B1D2DF5AEFE0000F2FF /* Build configuration list for PBXNativeTarget "KeyCloakAuthUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAEE5B1E2DF5AEFE0000F2FF /* Debug */,
+				AAEE5B1F2DF5AEFE0000F2FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAEE5AEC2DF5AEFB0000F2FF /* Project object */;
+}
