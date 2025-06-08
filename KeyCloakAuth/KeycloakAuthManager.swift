@@ -3,7 +3,8 @@ import SwiftUI
 import CryptoKit
 
 @MainActor
-class KeycloakAuthManager: ObservableObject {
+@Observable
+class KeycloakAuthManager {
     @Published var isAuthenticated = false
     @Published var accessToken: String?
     @Published var refreshToken: String?
