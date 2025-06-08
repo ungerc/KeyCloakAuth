@@ -76,7 +76,7 @@ class KeycloakAuthManager {
     // MARK: - Managers
     
     /// Handles Secure Enclave cryptographic operations
-    private let secureEnclaveManager = SecureEnclaveManager.shared
+    private let secureEnclaveManager: SecureEnclaveManager
     
     /// Handles passkey registration and authentication
     private let passkeyManager: PasskeyManager
@@ -108,12 +108,14 @@ class KeycloakAuthManager {
     /// Initializes the authentication manager and checks available authentication methods
     ///
     /// On initialization, the manager:
-    /// 1. Creates a PasskeyManager instance with the configured domain
-    /// 2. Checks if Secure Enclave is available
-    /// 3. Generates or loads Secure Enclave keys if available
-    /// 4. Checks if passkeys are supported (iOS 16.0+)
+    /// 1. Creates a SecureEnclaveManager instance
+    /// 2. Creates a PasskeyManager instance with the configured domain
+    /// 3. Checks if Secure Enclave is available
+    /// 4. Generates or loads Secure Enclave keys if available
+    /// 5. Checks if passkeys are supported (iOS 16.0+)
     init() {
-        // Initialize PasskeyManager with the Keycloak configuration
+        // Initialize managers
+        self.secureEnclaveManager = SecureEnclaveManager()
         self.passkeyManager = PasskeyManager(config: config)
         
         checkSecureEnclaveAvailability()

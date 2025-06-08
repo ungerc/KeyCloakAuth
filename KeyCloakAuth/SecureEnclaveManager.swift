@@ -43,23 +43,31 @@ import LocalAuthentication
 ///
 /// - Note: Secure Enclave is only available on devices with A7 chip or later
 class SecureEnclaveManager {
-    /// Shared singleton instance for app-wide Secure Enclave operations
-    static let shared = SecureEnclaveManager()
-    
     /// Tag identifier for the signing key in the keychain
     /// This tag is used to persist and retrieve the signing key reference
-    private let signingKeyTag = "com.keycloakauth.signingkey"
+    private let signingKeyTag: String
     
     /// Tag identifier for the key agreement key in the keychain
     /// This tag is used to persist and retrieve the key agreement key reference
-    private let keyAgreementKeyTag = "com.keycloakauth.keyagreementkey"
+    private let keyAgreementKeyTag: String
     
     /// Local authentication context for potential biometric operations
     /// Currently unused but available for future biometric-protected operations
     private let context = LAContext()
     
-    /// Private initializer to enforce singleton pattern
-    private init() {}
+    /// Initializes the SecureEnclaveManager with specific key tags
+    ///
+    /// - Parameters:
+    ///   - signingKeyTag: Tag for the signing key (default: "com.keycloakauth.signingkey")
+    ///   - keyAgreementKeyTag: Tag for the key agreement key (default: "com.keycloakauth.keyagreementkey")
+    ///
+    /// Using custom tags allows multiple instances to manage different sets of keys
+    /// if needed, while maintaining backward compatibility with default tags.
+    init(signingKeyTag: String = "com.keycloakauth.signingkey",
+         keyAgreementKeyTag: String = "com.keycloakauth.keyagreementkey") {
+        self.signingKeyTag = signingKeyTag
+        self.keyAgreementKeyTag = keyAgreementKeyTag
+    }
     
     /// Generates new key pairs in the Secure Enclave if they don't already exist
     ///
