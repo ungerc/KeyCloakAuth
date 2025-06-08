@@ -1,32 +1,13 @@
-//
-//  KeyCloakAuthApp.swift
-//  KeyCloakAuth
-//
-//  Created by Christian Unger on 08.06.25.
-//
-
 import SwiftUI
-import SwiftData
 
 @main
-struct KeyCloakAuthApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+struct KeycloakAuthApp: App {
+    @StateObject private var authManager = KeycloakAuthManager()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(authManager)
         }
-        .modelContainer(sharedModelContainer)
     }
 }
