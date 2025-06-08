@@ -27,10 +27,10 @@ class KeycloakAuthManager: ObservableObject {
         guard isSecureEnclaveAvailable else { return }
         
         do {
-            _ = try secureEnclaveManager.generateKeyPair()
-            print("Secure Enclave key pair generated or loaded successfully")
+            try secureEnclaveManager.generateKeyPairs()
+            print("Secure Enclave key pairs generated or loaded successfully")
         } catch {
-            print("Failed to setup Secure Enclave key: \(error)")
+            print("Failed to setup Secure Enclave keys: \(error)")
         }
     }
     
