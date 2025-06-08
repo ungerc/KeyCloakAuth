@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var authManager: KeycloakAuthManager
+    @Environment(KeycloakAuthManager.self) private var authManager
 
     var body: some View {
         NavigationView {
@@ -18,7 +18,8 @@ struct ContentView: View {
 }
 
 struct LoginView: View {
-    @EnvironmentObject var authManager: KeycloakAuthManager
+    @Environment(KeycloakAuthManager.self) private var authManager
+
     @State private var showingWebView = false
     @State private var showingAuthOptions = false
     @State private var isAuthenticating = false
@@ -93,7 +94,7 @@ struct LoginView: View {
 }
 
 struct AuthenticatedView: View {
-    @EnvironmentObject var authManager: KeycloakAuthManager
+    @Environment(KeycloakAuthManager.self) private var authManager
     @State private var showingPasskeyRegistration = false
     @State private var username = ""
     @State private var registrationError: String?
@@ -179,5 +180,5 @@ struct AuthenticatedView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(KeycloakAuthManager())
+        .environment(KeycloakAuthManager())
 }

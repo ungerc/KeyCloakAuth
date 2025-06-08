@@ -2,7 +2,7 @@ import SwiftUI
 import WebKit
 
 struct KeycloakWebView: UIViewRepresentable {
-    @EnvironmentObject var authManager: KeycloakAuthManager
+    @Environment(KeycloakAuthManager.self) private var authManager
     @Environment(\.dismiss) var dismiss
     
     func makeUIView(context: Context) -> WKWebView {
