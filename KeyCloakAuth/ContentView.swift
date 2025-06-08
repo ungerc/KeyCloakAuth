@@ -1,61 +1,74 @@
-//
-//  ContentView.swift
-//  KeyCloakAuth
-//
-//  Created by Christian Unger on 08.06.25.
-//
-
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @EnvironmentObject var authManager: KeycloakAuthManager
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+        NavigationView {
+            VStack(spacing: 20) {
+                if authManager.isAuthenticated {
+                    AuthenticatedView()
+                } else {
+                    LoginView()
                 }
             }
-        } detail: {
-            Text("Select an item")
+            .navigationTitle("Keycloak Auth Demo")
         }
     }
+}
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+struct LoginView: View {
+    @EnvironmentObject var authManager: KeycloakAuthManager
+    @State private var showingWebView = false
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Welcome to Keycloak Auth Demo")
+                .font(.title2)
+                .padding()
+
+            Button("Login with Keycloak") {
+                showingWebView = true
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+        }
+        .sheet(isPresented: $showingWebView) {
+            KeycloakWebView()
         }
     }
+}
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+struct AuthenticatedView: View {
+    @EnvironmentObject var authManager: KeycloakAuthManager
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Successfully Authenticated!")
+                .font(.title2)
+                .foregroundColor(.green)
+
+            if let token = authManager.accessToken {
+                Text("Access Token (truncated):")
+                    .font(.headline)
+                Text(String(token.prefix(50)) + "...")
+                    .font(.system(.caption, design: .monospaced))
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
             }
+
+            Button("Logout") {
+                authManager.logout()
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
         }
+        .padding()
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .environmentObject(KeycloakAuthManager())
 }
