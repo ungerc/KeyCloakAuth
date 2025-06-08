@@ -5,23 +5,37 @@ import CryptoKit
 @MainActor
 @Observable
 class KeycloakAuthManager {
-    @Published var isAuthenticated = false
-    @Published var accessToken: String?
-    @Published var refreshToken: String?
-    @Published var isSecureEnclaveAvailable = false
+    var isAuthenticated = false
+    var accessToken: String?
+    var refreshToken: String?
+    var isSecureEnclaveAvailable = false
+    var isPasskeyAvailable = false
+    var authMethod: AuthenticationMethod = .standard
     
     let config = KeycloakConfig()
     private let secureEnclaveManager = SecureEnclaveManager.shared
+    private let passkeyManager = PasskeyManager.shared
     private var codeVerifier: String?
     private var codeChallenge: String?
+    
+    enum AuthenticationMethod {
+        case standard
+        case secureEnclave
+        case passkey
+    }
     
     init() {
         checkSecureEnclaveAvailability()
         setupSecureEnclaveKey()
+        checkPasskeyAvailability()
     }
     
     private func checkSecureEnclaveAvailability() {
         isSecureEnclaveAvailable = SecureEnclave.isAvailable
+    }
+    
+    private func checkPasskeyAvailability() {
+        isPasskeyAvailable = passkeyManager.isPasskeyAvailable
     }
     
     private func setupSecureEnclaveKey() {
@@ -43,7 +57,7 @@ class KeycloakAuthManager {
         
         var components = URLComponents(string: "\(config.keycloakBaseURL)/auth/realms/\(config.realm)/protocol/openid-connect/auth")
         
-        components?.queryItems = [
+        var queryItems = [
             URLQueryItem(name: "client_id", value: config.clientId),
             URLQueryItem(name: "redirect_uri", value: config.redirectURI),
             URLQueryItem(name: "response_type", value: "code"),
@@ -53,6 +67,13 @@ class KeycloakAuthManager {
             URLQueryItem(name: "code_challenge", value: challenge),
             URLQueryItem(name: "code_challenge_method", value: "S256")
         ]
+        
+        // Add passkey hint if using passkey authentication
+        if authMethod == .passkey && isPasskeyAvailable {
+            queryItems.append(URLQueryItem(name: "acr_values", value: "passkey"))
+        }
+        
+        components?.queryItems = queryItems
         
         return components?.url
     }
@@ -244,6 +265,118 @@ class KeycloakAuthManager {
         // For now, just store in memory
         self.accessToken = tokens.accessToken
         self.refreshToken = tokens.refreshToken
+    }
+    
+    // MARK: - Passkey Authentication
+    
+    /// Authenticate using passkey
+    func authenticateWithPasskey() async {
+        guard isPasskeyAvailable else {
+            print("Passkeys not available")
+            return
+        }
+        
+        do {
+            // First, try to authenticate with existing passkey
+            let assertion = try await passkeyManager.authenticateWithPasskey()
+            
+            // Exchange passkey assertion for tokens
+            let tokens = try await exchangePasskeyAssertionForTokens(assertion: assertion)
+            
+            self.accessToken = tokens.accessToken
+            self.refreshToken = tokens.refreshToken
+            self.isAuthenticated = true
+            
+            // Store tokens securely
+            try await securelyStoreTokens(tokens)
+        } catch {
+            print("Passkey authentication failed: \(error)")
+            // Fall back to standard authentication
+            authMethod = .standard
+        }
+    }
+    
+    /// Register a new passkey for the current user
+    func registerPasskey(username: String) async throws {
+        guard isPasskeyAvailable else {
+            throw PasskeyError.notAvailable
+        }
+        
+        // Generate a user ID
+        let userId = UUID().uuidString.data(using: .utf8)!
+        
+        // Register the passkey
+        let credential = try await passkeyManager.registerPasskey(username: username, userId: userId)
+        
+        // Send credential to Keycloak for registration
+        try await registerPasskeyWithKeycloak(credential: credential, username: username)
+    }
+    
+    /// Exchange passkey assertion for tokens
+    private func exchangePasskeyAssertionForTokens(assertion: PasskeyAssertion) async throws -> TokenResponse {
+        let tokenURL = URL(string: "\(config.keycloakBaseURL)/auth/realms/\(config.realm)/protocol/openid-connect/token")!
+        
+        var request = URLRequest(url: tokenURL)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        // Create passkey assertion data
+        let assertionData = [
+            "credentialId": assertion.credentialID.base64EncodedString(),
+            "signature": assertion.signature.base64EncodedString(),
+            "clientDataJSON": assertion.clientDataJSON.base64EncodedString(),
+            "authenticatorData": assertion.authenticatorData.base64EncodedString(),
+            "userHandle": assertion.userID.base64EncodedString()
+        ]
+        
+        let assertionJSON = try JSONSerialization.data(withJSONObject: assertionData)
+        
+        let parameters = [
+            "grant_type": "urn:ietf:params:oauth:grant-type:passkey",
+            "client_id": config.clientId,
+            "assertion": assertionJSON.base64EncodedString()
+        ]
+        
+        let bodyString = parameters
+            .map { "\($0.key)=\($0.value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")" }
+            .joined(separator: "&")
+        
+        request.httpBody = bodyString.data(using: .utf8)
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let tokenResponse = try JSONDecoder().decode(TokenResponse.self, from: data)
+        
+        return tokenResponse
+    }
+    
+    /// Register passkey credential with Keycloak
+    private func registerPasskeyWithKeycloak(credential: PasskeyCredential, username: String) async throws {
+        guard let accessToken = accessToken else {
+            throw PasskeyError.registrationFailed
+        }
+        
+        let registerURL = URL(string: "\(config.keycloakBaseURL)/auth/realms/\(config.realm)/passkey/register")!
+        
+        var request = URLRequest(url: registerURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let registrationData = [
+            "username": username,
+            "credentialId": credential.credentialID.base64EncodedString(),
+            "publicKey": credential.publicKey.base64EncodedString(),
+            "attestationObject": credential.attestationObject.base64EncodedString()
+        ]
+        
+        request.httpBody = try JSONSerialization.data(withJSONObject: registrationData)
+        
+        let (_, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw PasskeyError.registrationFailed
+        }
     }
 }
 
