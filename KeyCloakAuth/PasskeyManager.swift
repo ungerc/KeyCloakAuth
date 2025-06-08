@@ -3,10 +3,10 @@ import AuthenticationServices
 import CryptoKit
 
 @MainActor
-class PasskeyManager: NSObject, ObservableObject {
+class PasskeyManager: NSObject {
     static let shared = PasskeyManager()
     
-    @Published var isPasskeyAvailable = false
+    var isPasskeyAvailable = false
     private let domain: String
     
     override init() {
