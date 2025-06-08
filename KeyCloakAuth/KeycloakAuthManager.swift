@@ -175,7 +175,7 @@ class KeycloakAuthManager: ObservableObject {
         ]
         
         let now = Date()
-        let claims = [
+        let claims: [String: Any] = [
             "iss": config.clientId,
             "sub": config.clientId,
             "aud": "\(config.keycloakBaseURL)/auth/realms/\(config.realm)",
