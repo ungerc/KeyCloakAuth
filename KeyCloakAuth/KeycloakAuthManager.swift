@@ -71,7 +71,7 @@ class KeycloakAuthManager {
     // MARK: - Configuration
     
     /// Keycloak server configuration
-    let config = KeycloakConfig()
+    let config: KeycloakConfig
     
     // MARK: - Managers
     
@@ -113,7 +113,10 @@ class KeycloakAuthManager {
     /// 3. Checks if Secure Enclave is available
     /// 4. Generates or loads Secure Enclave keys if available
     /// 5. Checks if passkeys are supported (iOS 16.0+)
-    init() {
+    init(config: KeycloakConfig) {
+        // Store configuration
+        self.config = config
+        
         // Initialize managers
         self.secureEnclaveManager = SecureEnclaveManager()
         self.passkeyManager = PasskeyManager(config: config)

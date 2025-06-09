@@ -23,6 +23,7 @@ struct LoginView: View {
     @State private var showingWebView = false
     @State private var showingAuthOptions = false
     @State private var isAuthenticating = false
+    @State private var showingConfig = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -43,16 +44,37 @@ struct LoginView: View {
             }
 
             Button("Login with Keycloak") {
-                showingAuthOptions = true
+                if authManager.config.isConfigured {
+                    showingAuthOptions = true
+                } else {
+                    showingConfig = true
+                }
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
             .disabled(isAuthenticating)
             
+            if !authManager.config.isConfigured {
+                Text("Please configure Keycloak settings first")
+                    .font(.caption)
+                    .foregroundColor(.orange)
+            }
+            
             if isAuthenticating {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
             }
+            
+            Spacer()
+            
+            Button(action: { showingConfig = true }) {
+                Label("Configure", systemImage: "gear")
+            }
+            .buttonStyle(.bordered)
+            .padding(.bottom)
+        }
+        .sheet(isPresented: $showingConfig) {
+            KeycloakConfigView(config: authManager.config)
         }
         .confirmationDialog("Choose Authentication Method", isPresented: $showingAuthOptions) {
             Button("Standard Login") {
@@ -180,5 +202,5 @@ struct AuthenticatedView: View {
 
 #Preview {
     ContentView()
-        .environment(KeycloakAuthManager())
+        .environment(KeycloakAuthManager(config: KeycloakConfig()))
 }
