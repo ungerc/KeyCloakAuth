@@ -17,6 +17,15 @@ class KeycloakConfig {
         didSet { save() }
     }
     
+    var urlScheme: String {
+        // Extract the URL scheme from the redirect URI
+        if let url = URL(string: redirectURI),
+           let scheme = url.scheme {
+            return scheme
+        }
+        return "yourapp"
+    }
+    
     // Optional: Add client secret if using confidential client
     // var clientSecret: String = "your-client-secret" {
     //     didSet { save() }

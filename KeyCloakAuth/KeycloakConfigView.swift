@@ -44,6 +44,18 @@ struct KeycloakConfigView: View {
                                 .font(.caption)
                         }
                     }
+                    
+                    HStack {
+                        Text("URL Scheme:")
+                        Spacer()
+                        Text(config.urlScheme)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                Section(footer: Text("Make sure your app's Info.plist includes the URL scheme '\(config.urlScheme)' to handle OAuth callbacks.")) {
+                    EmptyView()
                 }
                 
                 Section {
