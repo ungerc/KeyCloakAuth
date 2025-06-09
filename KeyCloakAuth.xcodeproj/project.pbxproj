@@ -33,6 +33,7 @@
 		AAEE5B302DF5D23F0000F2FF /* Exceptions for "KeyCloakAuth" folder in "KeyCloakAuth" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Info.plist,
 				README.md,
 			);
 			target = AAEE5AF32DF5AEFB0000F2FF /* KeyCloakAuth */;
