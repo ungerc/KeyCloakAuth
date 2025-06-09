@@ -13,14 +13,23 @@ class KeycloakConfig {
     var clientId: String = "your-client-id" {
         didSet { save() }
     }
-    var redirectURI: String = "yourapp://oauth/callback" {
-        didSet { save() }
+    var redirectURI: String {
+        // Load from Info.plist
+        if let urlTypes = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? [[String: Any]],
+           let urlType = urlTypes.first,
+           let urlSchemes = urlType["CFBundleURLSchemes"] as? [String],
+           let scheme = urlSchemes.first {
+            return "\(scheme)://oauth/callback"
+        }
+        return "yourapp://oauth/callback"
     }
     
     var urlScheme: String {
-        // Extract the URL scheme from the redirect URI
-        if let url = URL(string: redirectURI),
-           let scheme = url.scheme {
+        // Extract the URL scheme from Info.plist
+        if let urlTypes = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? [[String: Any]],
+           let urlType = urlTypes.first,
+           let urlSchemes = urlType["CFBundleURLSchemes"] as? [String],
+           let scheme = urlSchemes.first {
             return scheme
         }
         return "yourapp"
@@ -44,7 +53,6 @@ class KeycloakConfig {
             self.keycloakBaseURL = decoded.keycloakBaseURL
             self.realm = decoded.realm
             self.clientId = decoded.clientId
-            self.redirectURI = decoded.redirectURI
         }
     }
     
@@ -52,8 +60,7 @@ class KeycloakConfig {
         let configData = ConfigData(
             keycloakBaseURL: keycloakBaseURL,
             realm: realm,
-            clientId: clientId,
-            redirectURI: redirectURI
+            clientId: clientId
         )
         
         if let encoded = try? JSONEncoder().encode(configData) {
@@ -65,7 +72,6 @@ class KeycloakConfig {
         keycloakBaseURL = "https://your-keycloak-server.com"
         realm = "your-realm"
         clientId = "your-client-id"
-        redirectURI = "yourapp://oauth/callback"
         save()
     }
     
@@ -82,5 +88,4 @@ private struct ConfigData: Codable {
     let keycloakBaseURL: String
     let realm: String
     let clientId: String
-    let redirectURI: String
 }

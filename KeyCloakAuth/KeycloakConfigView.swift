@@ -24,10 +24,13 @@ struct KeycloakConfigView: View {
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                     
-                    TextField("Redirect URI", text: $config.redirectURI)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .textContentType(.URL)
+                    HStack {
+                        Text("Redirect URI")
+                        Spacer()
+                        Text(config.redirectURI)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 
                 Section(header: Text("Status")) {
